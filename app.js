@@ -96,6 +96,44 @@
     fadeElements.forEach(el => observer.observe(el));
   }
 
+  // --- Sticky CTA Bar ---
+  const stickyCta = document.getElementById('stickyCta');
+  const heroSection = document.getElementById('hero');
+  const contactSection = document.getElementById('contact');
+
+  if (stickyCta && heroSection && contactSection) {
+    const ctaObserver = new IntersectionObserver((entries) => {
+      // We track both hero and contact sections
+      entries.forEach(entry => {
+        updateStickyCta();
+      });
+    }, { threshold: 0.1 });
+
+    let heroVisible = true;
+    let contactVisible = false;
+
+    const heroObserver = new IntersectionObserver((entries) => {
+      heroVisible = entries[0].isIntersecting;
+      updateStickyCta();
+    }, { threshold: 0.1 });
+
+    const contactObserver = new IntersectionObserver((entries) => {
+      contactVisible = entries[0].isIntersecting;
+      updateStickyCta();
+    }, { threshold: 0.1 });
+
+    function updateStickyCta() {
+      if (!heroVisible && !contactVisible) {
+        stickyCta.classList.add('is-visible');
+      } else {
+        stickyCta.classList.remove('is-visible');
+      }
+    }
+
+    heroObserver.observe(heroSection);
+    contactObserver.observe(contactSection);
+  }
+
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
