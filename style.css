@@ -1046,7 +1046,7 @@
 }
 
 @media (min-width: 768px) {
-  .pricing__grid { grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto; }
+  .pricing__grid { grid-template-columns: 1.4fr 1fr; max-width: 960px; margin: 0 auto; align-items: start; }
 }
 
 .pricing-card {
@@ -1147,6 +1147,14 @@
   flex-direction: column;
   gap: var(--space-3);
   flex: 1;
+}
+
+@media (min-width: 768px) {
+  .pricing-card--featured .pricing-card__features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2) var(--space-4);
+  }
 }
 
 .pricing-card__features li {
