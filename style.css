@@ -1046,7 +1046,8 @@
 }
 
 @media (min-width: 768px) {
-  .pricing__grid { grid-template-columns: 1.4fr 1fr; max-width: 960px; margin: 0 auto; align-items: start; }
+  .pricing__grid { grid-template-columns: 1fr 1fr; max-width: 960px; margin: 0 auto; align-items: start; }
+  .pricing__grid--three { grid-template-columns: 1fr 1fr 1fr; max-width: 1100px; }
 }
 
 .pricing-card {
@@ -1149,13 +1150,7 @@
   flex: 1;
 }
 
-@media (min-width: 768px) {
-  .pricing-card--featured .pricing-card__features {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-2) var(--space-4);
-  }
-}
+
 
 .pricing-card__features li {
   font-size: var(--text-sm);
